@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping list</title>
+    <style>
+      .innerDiv {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 10%;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>My shopping list</h1>
+      <span>Enter a new item:</span>
+      <input type="text" id="item" />
+      <button onclick="addItem()">Add item</button>
+      <div id="listDiv"></div>
+    </div>
+
+    <script>
+      var deleteButton;
+      var unorderedList = document.createElement("ul");
+      var listDiv = document.getElementById("listDiv");
+      function addItem() {
+        var innerDiv = document.createElement("div");
+        innerDiv.classList.add("innerDiv");
+
+        var listItems = document.createElement("li");
+        var item = document.getElementById("item").value;
+        var itemText = document.createTextNode(item);
+        listItems.appendChild(itemText);
+
+        deleteButton = document.createElement("button");
+        deleteButton.setAttribute("id", "delete");
+
+        var deleteButtonValue = document.createTextNode("Delete");
+        deleteButton.appendChild(deleteButtonValue);
+        // console.log(deleteButton);
+
+        
+        innerDiv.appendChild(listItems);
+        innerDiv.appendChild(deleteButton);
+        
+        listDiv.appendChild(innerDiv);
+
+        deleteButton.addEventListener("click",()=>{
+            listDiv.removeChild(innerDiv);
+        })
+
+        document.getElementById("item").value = " ";
+      }
+
+      
+
+      
+    </script>
+  </body>
+</html>
