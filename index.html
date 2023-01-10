@@ -26,40 +26,42 @@
 
     <script>
       var deleteButton;
-      var unorderedList = document.createElement("ul");
-      var listDiv = document.getElementById("listDiv");
+      
       function addItem() {
-        var innerDiv = document.createElement("div");
-        innerDiv.classList.add("innerDiv");
-
-        var listItems = document.createElement("li");
+        
         var item = document.getElementById("item").value;
-        var itemText = document.createTextNode(item);
-        listItems.appendChild(itemText);
-
-        deleteButton = document.createElement("button");
-        deleteButton.setAttribute("id", "delete");
-
-        var deleteButtonValue = document.createTextNode("Delete");
-        deleteButton.appendChild(deleteButtonValue);
-        // console.log(deleteButton);
-
         
-        innerDiv.appendChild(listItems);
-        innerDiv.appendChild(deleteButton);
         
-        listDiv.appendChild(innerDiv);
+        if (item != "") {
+          var unorderedList = document.createElement("ul");
+          var listDiv = document.getElementById("listDiv");
+          var innerDiv = document.createElement("div");
+          innerDiv.classList.add("innerDiv");
+          
+          var listItems = document.createElement("li");
+          var itemText = document.createTextNode(item);
+          listItems.appendChild(itemText);
 
-        deleteButton.addEventListener("click",()=>{
+          deleteButton = document.createElement("button");
+          deleteButton.setAttribute("id", "delete");
+
+          var deleteButtonValue = document.createTextNode("Delete");
+          deleteButton.appendChild(deleteButtonValue);
+          // console.log(deleteButton);
+
+          innerDiv.appendChild(listItems);
+          innerDiv.appendChild(deleteButton);
+
+          listDiv.appendChild(innerDiv);
+          deleteButton.addEventListener("click", () => {
             listDiv.removeChild(innerDiv);
-        })
+          });
+          document.getElementById("item").value = " ";
 
-        document.getElementById("item").value = " ";
+        }else{
+
+        }
       }
-
-      
-
-      
     </script>
   </body>
 </html>
