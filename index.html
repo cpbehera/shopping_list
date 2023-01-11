@@ -32,7 +32,9 @@
         var item = document.getElementById("item").value;
         
         
-        if (item != "") {
+        if (item === "") {
+          return;
+        }
           var unorderedList = document.createElement("ul");
           var listDiv = document.getElementById("listDiv");
           var innerDiv = document.createElement("div");
@@ -57,11 +59,10 @@
             listDiv.removeChild(innerDiv);
           });
           document.getElementById("item").value = " ";
-
-        }else{
-
-        }
+          
+        
       }
+      
     </script>
   </body>
 </html>
